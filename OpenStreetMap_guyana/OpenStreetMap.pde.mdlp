@@ -1,0 +1,21 @@
+
+GraphTree t;
+float scaleFactor;
+
+void setup() 
+{
+	size(800, 800);
+
+	// Test graphtree with a guyane map
+    t = new GraphTree();
+    t.LoadFile("../guyane-latest.osm");
+
+	<<scale-factor>>
+
+	<<draw operation>>
+}
+
+void draw() { 
+	
+}
+

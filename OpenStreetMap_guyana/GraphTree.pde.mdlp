@@ -1,0 +1,27 @@
+
+class Way {
+	public int width;
+	public int maxSpeed;
+	public PVector[] nodeArray;
+}
+
+class GraphTree {
+	public Way [] wayArray;
+
+	public float maxX;
+	public float maxY;
+
+	float minlat;
+	float minlon;
+	float maxlat;
+	float maxlon;
+
+	GraphTree() {
+
+	}
+
+	public void LoadFile(String filename) {
+		HashMap<String,PVector> nodeMap = new HashMap<String,PVector>();
+		<<load-file>>
+	}
+}
