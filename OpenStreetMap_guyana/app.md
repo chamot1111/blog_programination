@@ -5,13 +5,13 @@ The goal of this article is to display data from the open cartography project Op
 
 OpenStreetMap map are xml files. We will use Processing as programming tool. It's able to load xml files and draw very easily. The language behind the scene is java.
 
-All coordinates are in longitude/lattitude unit, we need first to convert it a 2D plan in meter. It's an early approximation, that will change distance between two far points but will be a good approximation in the same small country. It will let easily see if the order of magnitude of the distance displayed is good. 
+All coordinates are in longitude/lattitude unit, we need first to convert it into a 2D plan in meters. It's an early approximation, that will change distance between two far points but will be a good approximation in the same small country. It will let easily see if the order of magnitude of the distance displayed is good. 
 
 Then we will load the xml file in memory. And finally we will draw map on the screen.
 
 For this example I use a map of Guyana, because it's one of the smaller map available. You can download it from here:
 
-http://download.geofabrik.de/europe/france/guyane.html
+[http://download.geofabrik.de/europe/france/guyane.html]()
 
 You must use the non compressed format `.osm`.
 
@@ -38,12 +38,12 @@ The conversion take a longitude / latitude to convert and the origin in longitud
 ```
 
 If you want more information see:
-http://www.johndcook.com/lat_long_details.html
+[http://www.johndcook.com/lat_long_details.html]()
 
 Load XML file
 -------------
 
-We use the loadXML method from processing: http://processing.org/reference/loadXML_.html
+We use the loadXML method from processing: [http://processing.org/reference/loadXML_.html]()
 
 ```
 	<<load-file>> =
@@ -226,7 +226,9 @@ Then we draw simply the ways.
 Conclusion
 ----------
 
-What we see, is that the `.osm` format is pretty simple but that the LoadXML method in processing is not accurate for this problem. File are too large and we must use a parser that don't load all the file in memory first.
+What we see, is that the `.osm` format is pretty simple but the LoadXML method in processing is not accurate for this problem. File are too large and we must use a parser that don't load all the file in memory first.
+
+You can find the source code in [https://github.com/chamot1111/blog_programination]()
 
 Appendix
 ========

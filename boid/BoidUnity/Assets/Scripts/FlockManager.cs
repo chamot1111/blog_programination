@@ -1,0 +1,54 @@
+using UnityEngine;
+using System.Collections;
+
+
+public class FlockManager : MonoBehaviour {
+
+    public float kFOVDistance_m = 8.0f;
+    public float kFOVAngle_d = 100.0f;
+    public float kMinimumSeparationDistance_m = 5.0f;
+    public float kRepulsionCoeff = 1.0f;
+    public float kVelocityMatchingCoeff = 0.025f;
+    public float kFlockCenteringCoeff = 0.005f;
+    public float kMaxVelocity_m_s = 20.0f;
+    public float kMinVelocity_m_s = 8.0f;
+
+    public float kSphereConfinement = 0.1f;
+    public float kSphereRadius = 50.0f;
+
+    public int boidCount = 30;
+
+    public Boid boidPrefab;
+
+    void Start() {
+        for(int i = 0; i < boidCount; i++) {
+            Boid b = Instantiate (boidPrefab, Random.insideUnitSphere * kSphereRadius * 0.5f, Random.rotation) as Boid;
+            b.SetVelocity(Random.onUnitSphere * 10.0f);
+        }
+    }
+    
+    void Update() {
+    
+    }
+
+    /**
+     * Get Manager attached to the main camera
+     */
+    static public FlockManager GetMain() {
+        return Camera.main.GetComponent<FlockManager>();
+    }
+
+    /**
+     * Create a force that depend only of the position of the
+     * boid like turbulence
+     */
+    public Vector3 GetExternalForce( Vector3 pos ) {
+        // keep the boid in a sphere
+        // centered in zero
+        float dist = pos.magnitude;
+        if( dist > kSphereRadius * 0.8f ) {
+            return -pos.normalized * kSphereConfinement;
+        }
+        return Vector3.zero;
+    }
+}

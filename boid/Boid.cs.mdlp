@@ -1,0 +1,57 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class Boid : MonoBehaviour {
+
+	// make it public to be seen in the inspector
+	// use getter/sstter instead of direct access in the code
+	public Vector3 velocity;
+
+	public bool IsInFieldOfView(Vector3 pos) {
+		<<field-of-view>>
+	}
+
+	public Vector3 GetCollisionAvoidance() {
+		<<collision-avoidance>>
+	}
+
+	public Vector3 GetVelocityMatching() {
+		<<velocity-matching>>
+	}
+
+	public Vector3 GetFlockCentering() {
+		<<flock-centering>>
+	}
+
+	public Vector3 GetVelocity() {
+		return velocity;
+	}
+
+	public void SetVelocity(Vector3 v) {
+		velocity = v;
+	}
+
+    void Awake() {
+        boidsInCollider = new LinkedList<Boid>();
+        neighbours = new LinkedList<Boid>();
+    }
+
+    void Start() {
+        flockManager = FlockManager.GetMain();
+    }
+	
+	void Update() {
+		<<filter-fov>>
+
+		<<update-velocity>>
+
+		<<update-position>>
+	}
+
+	<<collider-events>>
+
+	private FlockManager flockManager;
+	private LinkedList<Boid> neighbours;
+	private LinkedList<Boid> boidsInCollider;
+}
