@@ -34,7 +34,7 @@ public class Boid : MonoBehaviour {
 
     void Awake() {
         boidsInCollider = new LinkedList<Boid>();
-        neighbours = new LinkedList<Boid>();
+        neighbors = new LinkedList<Boid>();
     }
 
     void Start() {
@@ -52,6 +52,6 @@ public class Boid : MonoBehaviour {
 	<<collider-events>>
 
 	private FlockManager flockManager;
-	private LinkedList<Boid> neighbours;
+	private LinkedList<Boid> neighbors;
 	private LinkedList<Boid> boidsInCollider;
 }

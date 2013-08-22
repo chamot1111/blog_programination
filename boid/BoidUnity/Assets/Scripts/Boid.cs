@@ -23,7 +23,7 @@ public class Boid : MonoBehaviour {
         Vector3 sumForce = Vector3.zero;
         int closerCount = 0;
         
-        foreach ( Boid b in neighbours )
+        foreach ( Boid b in neighbors )
         {
             float d = Vector3.Distance( b.transform.position, this.transform.position );
             if ( d != 0.0f && d < flockManager.kMinimumSeparationDistance_m ) {
@@ -39,12 +39,12 @@ public class Boid : MonoBehaviour {
 
     public Vector3 GetVelocityMatching() {
         Vector3 v = Vector3.zero;
-        foreach ( Boid b in neighbours )
+        foreach ( Boid b in neighbors )
         {
             v += b.GetVelocity();
         }
-        if(neighbours.Count > 0) {
-            Vector3 avgVelocity = ( v / (float) neighbours.Count );
+        if(neighbors.Count > 0) {
+            Vector3 avgVelocity = ( v / (float) neighbors.Count );
             return (avgVelocity - velocity) * flockManager.kVelocityMatchingCoeff;
         }
         return Vector3.zero;
@@ -52,11 +52,11 @@ public class Boid : MonoBehaviour {
 
     public Vector3 GetFlockCentering() {
         Vector3 center = Vector3.zero;
-        foreach ( Boid b in neighbours )
+        foreach ( Boid b in neighbors )
         {
             center += b.transform.position - this.transform.position;
         }
-        return (neighbours.Count > 0) ? ( center / (float) neighbours.Count ) * flockManager.kFlockCenteringCoeff : Vector3.zero;
+        return (neighbors.Count > 0) ? ( center / (float) neighbors.Count ) * flockManager.kFlockCenteringCoeff : Vector3.zero;
     }
 
     public Vector3 GetVelocity() {
@@ -69,7 +69,7 @@ public class Boid : MonoBehaviour {
 
     void Awake() {
         boidsInCollider = new LinkedList<Boid>();
-        neighbours = new LinkedList<Boid>();
+        neighbors = new LinkedList<Boid>();
     }
 
     void Start() {
@@ -77,10 +77,10 @@ public class Boid : MonoBehaviour {
     }
     
     void Update() {
-        neighbours.Clear();
+        neighbors.Clear();
         foreach(Boid b in boidsInCollider) {
             if( IsInFieldOfView(b.transform.position) ) {
-                neighbours.AddFirst(b);
+                neighbors.AddFirst(b);
             }
         }
 
@@ -120,6 +120,6 @@ public class Boid : MonoBehaviour {
     }
 
     private FlockManager flockManager;
-    private LinkedList<Boid> neighbours;
+    private LinkedList<Boid> neighbors;
     private LinkedList<Boid> boidsInCollider;
 }

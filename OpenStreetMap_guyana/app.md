@@ -11,7 +11,7 @@ Then we will load the xml file in memory. And finally we will draw map on the sc
 
 For this example I use a map of Guyana, because it's one of the smaller map available. You can download it from here:
 
-[http://download.geofabrik.de/europe/france/guyane.html]()
+[http://download.geofabrik.de/europe/france/guyane.html](http://download.geofabrik.de/europe/france/guyane.html)
 
 You must use the non compressed format `.osm`.
 
@@ -38,12 +38,12 @@ The conversion take a longitude / latitude to convert and the origin in longitud
 ```
 
 If you want more information see:
-[http://www.johndcook.com/lat_long_details.html]()
+[http://www.johndcook.com/lat_long_details.html](http://www.johndcook.com/lat_long_details.html)
 
 Load XML file
 -------------
 
-We use the loadXML method from processing: [http://processing.org/reference/loadXML_.html]()
+We use the loadXML method from processing: [http://processing.org/reference/loadXML_.html](http://processing.org/reference/loadXML_.html)
 
 ```
 	<<load-file>> =
@@ -109,7 +109,7 @@ We first parse the nodes.
 		}
 ```
 
-The coordinate of the node is in long/lat fromat, we will first convert it in meters using min bounds as origin.
+The coordinate of the node is in long/lat format, we will first convert it in meters using min bounds as origin.
 
 ```
 	<<convert-node>> = 
